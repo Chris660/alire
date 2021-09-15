@@ -2,6 +2,12 @@ package Alire.Platforms with Preelaborate is
 
    --  Platform information necessary for some releases
 
+   type Architectures is (AARM64,
+                          ARM,
+                          I686,
+                          X86_64,
+                          Architecture_Unknown);
+
    type Operating_Systems is (Linux,
                               MacOS,
                               Windows,

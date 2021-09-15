@@ -23,8 +23,13 @@ package Alr.Platforms.Linux is
    -----------------------
    --  Self identification
 
-   overriding function Distribution (This : Linux_Variant)
-                                     return Alire.Platforms.Distributions;
+   overriding
+   function Architecture (This : Linux_Variant)
+                          return Alire.Platforms.Architectures;
+
+   overriding
+   function Distribution (This : Linux_Variant)
+                          return Alire.Platforms.Distributions;
 
    overriding
    function Operating_System (This : Linux_Variant)

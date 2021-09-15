@@ -1,10 +1,29 @@
 with Alire.Platform;
+with Alire.OS_Lib.Subprocess;
 
 with Alr.OS_Lib;
 
 package body Alr.Platforms.Linux is
 
    use Alr.OS_Lib.Paths;
+
+   ------------------
+   -- Architecture --
+   ------------------
+
+   overriding
+   function Architecture (This : Linux_Variant)
+                          return Alire.Platforms.Architectures
+   is
+      Machine : constant String :=
+
+   begin
+
+   exception
+      when E : others =>
+         Log_Exception (E);
+         return Alire.Platforms.Architecture_Unknown;
+   end Architecture;
 
    ------------------
    -- Cache_Folder --

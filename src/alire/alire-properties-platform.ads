@@ -10,6 +10,16 @@ package Alire.Properties.Platform with Preelaborate is
 
    pragma Warnings (Off); -- unreferenced galore follows
 
+   function Archit_Key (A : Platforms.Architectures) return String
+   is (TOML_Keys.Architecture);
+
+   function Tomify is new TOML_Adapters.Tomify_Enum (Platforms.Architectures);
+   package Architectures is new Values (Platforms.Architectures,
+                                        Platforms.Architectures'Image,
+                                        Platforms.Architectures'Image,
+                                        Archit_Key,
+                                        Tomify);
+
    function Distro_Key (D : Platforms.Distributions) return String
    is (TOML_Keys.Distribution);
 
@@ -65,6 +75,13 @@ package Alire.Properties.Platform with Preelaborate is
    package Ps   renames Platforms;
    package PrPl renames Properties.Platform;
 
+   package Archit_Cases is new Cases
+     (Enum      => Ps.Architectures,
+      Property  => PrPl.Architectures.Property,
+      Element   => PrPl.Architectures.Element,
+      Name      => "Architecture",
+      TOML_Name => TOML_Keys.Architecture);
+
    package Distro_Cases is new Cases
      (Enum      => Ps.Distributions,
       Property  => PrPl.Distributions.Property,
@@ -92,6 +109,9 @@ package Alire.Properties.Platform with Preelaborate is
       Element   => PrPl.Word_Sizes.Element,
       Name      => "Word_Size",
       TOML_Name => TOML_Keys.Word_Size);
+
+   function Architecture_Is (A : Platforms.Architectures) return Vector
+   renames Architectures.New_Vector;
 
    function Distribution_Is (D : Platforms.Distributions) return Vector
    renames Distributions.New_Vector;

@@ -16,7 +16,8 @@ package body Alr.Platform is
    use all type Alire.Properties.Vector;
 
    function Properties return Alire.Properties.Vector
-   is (Platprop.Distribution_Is (Distribution) and
+   is (Platprop.Architecture_Is (Architecture) and
+         Platprop.Distribution_Is (Distribution) and
          Platprop.System_Is (Operating_System) and
          Platprop.Target_Is (Target) and
          Platprop.Toolchain_Is (Toolchain) and

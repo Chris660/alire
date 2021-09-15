@@ -29,6 +29,8 @@ package Alr.Platform is
 
    function Config_Folder return String;
 
+   function Architecture return Alire.Platforms.Architectures;
+
    function Distribution return Alire.Platforms.Distributions;
 
    function Operating_System return Alire.Platforms.Operating_Systems;
@@ -57,6 +59,13 @@ private
    -------------------
 
    function Config_Folder return String is (Get.Config_Folder);
+
+   ------------------
+   -- Architecture --
+   ------------------
+
+   function Architecture return Alire.Platforms.Architectures
+   is (Get.Architecture);
 
    ------------------
    -- Distribution --

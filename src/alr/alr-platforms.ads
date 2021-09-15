@@ -28,6 +28,10 @@ package Alr.Platforms is
    -----------------------
    --  Self identification
 
+   function Architecture (This : Supported)
+                          return Alire.Platforms.Architectures
+   is abstract;
+
    function Distribution (This : Supported)
                           return Alire.Platforms.Distributions
    is abstract;
